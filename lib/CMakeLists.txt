@@ -1,0 +1,1 @@
+add_library(lib INTERFACE stl-algorithms/algorithms.h)
