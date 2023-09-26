@@ -1,28 +1,28 @@
-# Алгоритмы STL, xrange, zip
+# Algorithms STL, xrange, zip
 
-Реализован набор stl-совместимых алгоритмов, генератор xrange и zip. Покрыты тестами.
+A set of stl-compatible algorithms, an xrange and zip generator have been implemented. Covered with tests.
 
-### Алгоритмы
+### Algorithms
 
-- **all_of** - возвращает true, если все элементы диапазона удовлетворяют некоторому предикату. Иначе false
-- **any_of** - возвращает true, если хотя бы один из элементов диапазона удовлетворяет некоторому предикату. Иначе false
-- **none_of** - возвращает true, если все элементы диапазона не удовлетворяют некоторому предикату. Иначе false
-- **one_of** - возвращает true, если ровно один элемент диапазона удовлетворяет некоторому предикату. Иначе false
-- **is_sorted** - возвращает true, если все элементы диапазона находятся в отсортированном порядке относительно некоторого критерия
-- **is_partitioned** - возвращает true, если в диапазоне есть элемент, делящий все элементы на удовлетворяющие и не удовлетворяющие - некоторому предикату. Иначе false.
-- **find_not** - находит первый элемент, не равный заданному
-- **find_backward** - находит первый элемент, равный заданному, с конца
-- **is_palindrome** - возвращает true, если заданная последовательность является палиндромом относительно некоторого условия. Иначе false.
+- **all_of** - returns true if all elements of the range satisfy some predicate. Otherwise false
+- **any_of** - returns true if at least one of the range elements satisfies some predicate. Otherwise false
+- **none_of** - returns true if all elements of the range do not satisfy some predicate. Otherwise false
+- **one_of** - returns true if exactly one element of the range satisfies some predicate. Otherwise false
+- **is_sorted** - returns true if all elements of the range are in sorted order relative to some criterion
+- **is_partitioned** - returns true if there is an element in the range that divides all elements into those that satisfy and do not satisfy - some predicate. Otherwise false.
+- **find_not** - finds the first element that is not equal to the given one
+- **find_backward** - finds the first element equal to the given one from the end
+- **is_palindrome** - returns true if the given sequence is a palindrome with respect to some condition. Otherwise false.
 
-### xrange
+###xrange
 
-В питоне есть весьма полезная функция [xrange](https://docs.python.org/2/library/functions.html#xrange). Реализовать ее аналог за O(1) по памяти. Функция помогает генерировать значение из определенного диапазона с некоторым шагом.
-Реализованы три сигнатуры
+Python has a very useful function [xrange](https://docs.python.org/2/library/functions.html#xrange). Implement its analogue in O(1) from memory. The function helps generate a value from a certain range with a certain step.
+Three signatures implemented
 - xrange(start, end)
-- xrange(end)
+-xrange(end)
 - xrange(start, end, step)
 
-Например:
+For example:
 
 ```cpp
 auto x = xrange(1.5, 5.5);
@@ -37,28 +37,28 @@ std::vector<int> v{x.begin(), x.end()}; // 0 1 2 3
 ```cpp
 // 1 3 5
 for(auto i : xrange(1, 6, 2)) {
-    std::cout << i <<  " ";
+     std::cout << i << " ";
 }
 ```
 
-Без указания шага, на каждой итерации генерируется инкремент к предыдущему значению, при трех параметрах - увеличивается на указанных шаг
+Without specifying a step, at each iteration an increment is generated to the previous value, with three parameters it is increased by the specified step
 
 
 ### zip
 
-Так же в питоне есть стандартная [функция zip](https://docs.python.org/2/library/functions.html#zip), также реализована - для 2 аргументов за O(1) по памяти. Функция генерирует пары, где i-я пара состоит из i-го числа первой и второй последовательности. Если одна последовательность короче второй, то после достижения последнего элемента более короткой последовательности генерация заканчивается, Функция поддерживает работу с любыми контейнерами поддерживающими однонаправленные итераторы.
+Python also has a standard [zip function](https://docs.python.org/2/library/functions.html#zip), also implemented - for 2 arguments in O(1) memory. The function generates pairs, where the i-th pair consists of the i-th number of the first and second sequence. If one sequence is shorter than the second, then after reaching the last element of the shorter sequence, generation ends. The function supports working with any containers that support unidirectional iterators.
 
-Пример:
+Example:
 ```c++
 std::list l = {1, 2, 3, 4, 5};
 std::vector v = {'a', 'b', 'c', 'd'};
 /*
 1 a
 2 b
-3 c
+3 s
 4 d
 */
 for(auto value : zip(l, v)) {
-  std::cout << value.first << " " << value.second << std::endl;
+   std::cout << value.first << " " << value.second << std::endl;
 }
 ```
