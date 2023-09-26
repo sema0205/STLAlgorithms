@@ -14,7 +14,7 @@ A set of stl-compatible algorithms, an xrange and zip generator have been implem
 - **find_backward** - finds the first element equal to the given one from the end
 - **is_palindrome** - returns true if the given sequence is a palindrome with respect to some condition. Otherwise false.
 
-###xrange
+### xrange
 
 Python has a very useful function [xrange](https://docs.python.org/2/library/functions.html#xrange). Implement its analogue in O(1) from memory. The function helps generate a value from a certain range with a certain step.
 Three signatures implemented
